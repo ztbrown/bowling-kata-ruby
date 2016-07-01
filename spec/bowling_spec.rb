@@ -52,4 +52,10 @@ RSpec.describe Bowling, "#score" do
       end
     end
   end
+
+  context 'open frames' do
+    it "records a score of x for 34222345638133445362" do
+      expect(bowling.score("34222345638133445362")).to eq(73)
+    end
+  end
 end
