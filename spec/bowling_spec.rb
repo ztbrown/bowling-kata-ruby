@@ -15,6 +15,18 @@ RSpec.describe Bowling, "#score" do
         expect(bowling.score("X#{pins[0].to_s}#{pins[1].to_s}")).to eq(pins[0] + pins[1] + (10 + pins[0] + pins[1]))
       end
     end
+    it "records a score of 60 for 3 strikes" do
+      expect(bowling.score("XXX")).to eq(60)
+    end
+    it "records a score of 30 for a spare following a strike" do
+      expect(bowling.score("X/")).to eq(30)
+    end
+    it "records a score of 300 for a perfect game" do
+      expect(bowling.score("XXXXXXXXXXXX")).to eq(300)
+    end
+    it "records a score of 274 for a near-perfect game" do
+      expect(bowling.score("XXXXXXXXXX12")).to eq(274)
+    end
   end
 
   context 'following a spare' do
